@@ -275,11 +275,22 @@ void motion(int x, int y) {
 
     }
 
-   /* if (angle_x <= 43){
-        angle_x =42;
-    }*/
+    if (angle_x >= 12) {
+        angle_x = 12;
+    }
+
+
+    else if (angle_x <= -6){
+        angle_x =-6;
+    }
+    if (angle_y >= 130) {
+        angle_y = 130;
+    }
+    else if (angle_y <= 45) {
+        angle_y = 45;
+    }
     // change the value as necessary 
-    //printf("%f ", angle_x);
+    printf("%f ", angle_x);
     //printf("%f ", angle_y);
 
 }
@@ -667,26 +678,46 @@ void drawHouse() {
         glPopMatrix();
     }
 }
-void gun() {
+
+void drawGun(int radius,int height) {
+    float x = 0.0;
+    float y = 0.0;
+    float z = 0.0;
+
+    float angle = 0.0;
+    float stepSize =  2.0 * 3.142 / 50;
+
+    glBegin(GL_QUAD_STRIP);
+    while (angle < 2 * 3.142) {
+        x = radius * cos(angle);
+        z = radius * sin(angle);
+        glVertex3f(x, y, z);
+        glVertex3f(x, y + height, z);
+        angle += stepSize;
+    }
+
+    //Last two points
+    glVertex3f(radius, 0, 0);
+    glVertex3f(radius, height, 0);
+
+
+
+    glEnd();
+}
+void gun(int radius,int height) {
     glPushMatrix();
-    //glScaled(30, 10, 10);
-    glRotated(180, 0, 1, 0);
-    glutSolidCube(1);
-
-
+    drawGun(radius, height);
     glPopMatrix();
 
-
-
+    glPushMatrix();
+    glColor3d(0.2, 0.2, 0.2);
+    glScaled(0.4, 0.4, 0.4);
+    glTranslated(0, height - (height * 0.8), -radius*3);
+    drawGun(radius, height);
+    glPopMatrix();
 
 }
 
-void renderString(const std::string& text, int x, int y) {
-    glRasterPos2i(x, y);
-    for (char c : text) {
-        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, c);
-    }
-}
 void display() {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -696,10 +727,8 @@ void display() {
     gluLookAt(0, 5, 5, 0, camY, 0, 0, 1, 0);
 
     /* set material parameters */
-    const GLfloat blue[4] = { 0.3, 0.3, 1.0, 1.0 };
+    const GLfloat blue[4] = { 0.356, 0.376, 0.396, 1.0 };
     glMaterialfv(GL_FRONT, GL_DIFFUSE, blue);
-    const GLfloat matwhite[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    glMaterialfv(GL_FRONT, GL_SPECULAR, matwhite);
     glMaterialf(GL_FRONT, GL_SHININESS, 128.0f);
 
     /* positioned the light source 1 */
@@ -707,26 +736,22 @@ void display() {
     glLightfv(GL_LIGHT0, GL_POSITION, position0);
 
     /* set light intensities for light source 1 */
-    GLfloat paleYellow[] = { 1.0,1.0,0.75,1.0 };
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, paleYellow);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, blue);
     GLfloat white[] = { 1.0,1.0,1.0,1.0 };
-    glLightfv(GL_LIGHT0, GL_SPECULAR, blue);
 
     /* positioned the light source 2 */
     GLfloat position1[] = { 24.0,9.0,-19.0,1.0 };
     glLightfv(GL_LIGHT1, GL_POSITION, position1);
 
     /* set light intensities for light source 2 */
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, paleYellow);
-    glLightfv(GL_LIGHT1, GL_SPECULAR, blue);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, blue);
 
     /* positioned the light source 3 */
     GLfloat position2[] = { -20.0,10.0,19.0,1.0 };
     glLightfv(GL_LIGHT2, GL_POSITION, position2);
 
     /* set light intensities for light source 3 */
-    glLightfv(GL_LIGHT2, GL_DIFFUSE, paleYellow);
-    glLightfv(GL_LIGHT1, GL_SPECULAR, white);
+    glLightfv(GL_LIGHT2, GL_DIFFUSE, blue);
 
 
     glDisable(GL_NORMALIZE);
@@ -760,9 +785,11 @@ void display() {
     glRotatef(-angle_x, 1, 0, 0);
 
     glRotatef(-angle_y, 0, 1, 0);
-    glRotatef(180, 0, 0, 1);
-    //gun();
-    model.draw();
+    glRotatef(90, 1, 0, 0);
+    glScaled(0.1, 5, 0.1);
+    gun(4,2);
+
+    //model.draw();
     glPopMatrix();
 
 
