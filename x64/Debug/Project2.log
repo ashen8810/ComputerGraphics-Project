@@ -1,0 +1,37 @@
+﻿  Source.cpp
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(233,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(318,44): warning C4244: '+=': conversion from 'GLfloat' to 'GLint', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(319,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(320,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(322,28): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(323,29): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(483,5): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(483,50): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(538,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(544,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(550,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(700,50): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(753,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+Source.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowPosition referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowSize referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutInitDisplayMode referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutMainLoop referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutPostRedisplay referenced in function "void __cdecl Timer(int)" (?Timer@@YAXH@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glutSwapBuffers referenced in function "void __cdecl display(void)" (?display@@YAXXZ)
+Source.obj : error LNK2019: unresolved external symbol __imp_glutTimerFunc referenced in function "void __cdecl Timer(int)" (?Timer@@YAXH@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glutKeyboardFunc referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutSpecialFunc referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutReshapeFunc referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutDisplayFunc referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutMouseFunc referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutMotionFunc referenced in function main
+Source.obj : error LNK2019: unresolved external symbol __imp_glutBitmapCharacter referenced in function "void __cdecl renderString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,int,int)" (?renderString@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
+Source.obj : error LNK2019: unresolved external symbol __imp_glutSolidCube referenced in function "void __cdecl drawHouse(void)" (?drawHouse@@YAXXZ)
+Source.obj : error LNK2019: unresolved external symbol __imp___glutInitWithExit referenced in function glutInit_ATEXIT_HACK
+Source.obj : error LNK2019: unresolved external symbol __imp___glutCreateWindowWithExit referenced in function glutCreateWindow_ATEXIT_HACK
+Source.obj : error LNK2019: unresolved external symbol SOIL_load_OGL_texture referenced in function "void __cdecl loadBox(void)" (?loadBox@@YAXXZ)
+Source.obj : error LNK2019: unresolved external symbol SOIL_last_result referenced in function "void __cdecl loadBox(void)" (?loadBox@@YAXXZ)
+C:\Users\HP\Documents\lib\opengl\freeglut\lib\freeglut.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\HP\Documents\lib\opengl\Soil\lib\soil2-debug.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\HP\Documents\lib\opengl\SFML\lib\sfml-audio.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\HP\source\repos\Project2\x64\Debug\Project2.exe : fatal error LNK1120: 19 unresolved externals

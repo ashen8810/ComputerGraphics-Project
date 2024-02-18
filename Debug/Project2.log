@@ -1,0 +1,19 @@
+﻿  Source.cpp
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(232,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(317,44): warning C4244: '+=': conversion from 'GLfloat' to 'GLint', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(318,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(319,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(321,28): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(322,29): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(482,5): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(482,50): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(537,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(543,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(549,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(699,50): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(755,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(image_DXT.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
+soil2-debug.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(image_helper.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(SOIL2.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
+soil2-debug.lib(wfETC.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(wfETC.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
+  Project2.vcxproj -> C:\Users\HP\source\repos\Project2\Debug\Project2.exe
