@@ -1,21 +1,28 @@
 ﻿  Source.cpp
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(232,24): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(328,44): warning C4244: '+=': conversion from 'GLfloat' to 'GLint', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(329,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(330,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(332,28): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(333,29): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(493,5): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(493,50): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(548,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(554,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(560,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(688,39): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(700,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(701,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(701,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(730,56): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
-C:\Users\HP\source\repos\Project2\Project2\Source.cpp(780,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(295,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(387,44): warning C4244: '+=': conversion from 'GLfloat' to 'GLint', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(388,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(389,20): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(391,28): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(392,29): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(552,5): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(552,50): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(607,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(613,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(619,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(747,39): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(759,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(760,24): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(760,16): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(785,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(786,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(791,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(792,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(804,56): warning C4305: 'initializing': truncation from 'double' to 'const GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(854,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\HP\source\repos\Project2\Project2\Source.cpp(86): warning C4715: 'play': not all control paths return a value
 soil2-debug.lib(image_DXT.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(image_DXT.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
+soil2-debug.lib(image_helper.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(image_helper.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
 soil2-debug.lib(SOIL2.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(SOIL2.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
+soil2-debug.lib(wfETC.obj) : warning LNK4099: PDB 'soil2-debug.pdb' was not found with 'soil2-debug.lib(wfETC.obj)' or at 'C:\Users\HP\source\repos\Project2\Debug\soil2-debug.pdb'; linking object as if no debug info
   Project2.vcxproj -> C:\Users\HP\source\repos\Project2\Debug\Project2.exe

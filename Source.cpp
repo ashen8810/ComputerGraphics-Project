@@ -12,6 +12,11 @@ using namespace std;
 #include <MMSystem.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define MINIAUDIO_IMPLEMENTATION
+#include "miniAudio.h"
+#include <thread>
+#include <chrono>   // for std::chrono::milliseconds
+
 #pragma comment(lib, "winmm.lib")
 #define pi 3.142857
 #define _CRT_SECURE_NO_WARNINGS
@@ -21,6 +26,64 @@ GLuint textureWall;
 GLuint textureBox;
 GLuint textureRoof;
 GLuint textureBoxContainer;
+void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
+{
+    ma_decoder* pDecoder = (ma_decoder*)pDevice->pUserData;
+    if (pDecoder == NULL) {
+        return;
+    }
+
+    /* Reading PCM frames will loop based on what we specified when called ma_data_source_set_looping(). */
+    ma_data_source_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
+
+    (void)pInput;
+}
+int play() {
+    ma_result result;
+    ma_decoder decoder;
+    ma_device_config deviceConfig;
+    ma_device device;
+
+  
+
+    result = ma_decoder_init_file("walk.wav", NULL, &decoder);
+    if (result != MA_SUCCESS) {
+        //return -2;
+    }
+
+    /*
+    A decoder is a data source which means we just use ma_data_source_set_looping() to set the
+    looping state. We will read data using ma_data_source_read_pcm_frames() in the data callback.
+    */
+    ma_data_source_set_looping(&decoder, MA_TRUE);
+
+    deviceConfig = ma_device_config_init(ma_device_type_playback);
+    deviceConfig.playback.format = decoder.outputFormat;
+    deviceConfig.playback.channels = decoder.outputChannels;
+    deviceConfig.sampleRate = decoder.outputSampleRate;
+    deviceConfig.dataCallback = data_callback;
+    deviceConfig.pUserData = &decoder;
+
+    if (ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS) {
+        printf("Failed to open playback device.\n");
+        ma_decoder_uninit(&decoder);
+        return -3;
+    }
+
+    if (ma_device_start(&device) != MA_SUCCESS) {
+        printf("Failed to start playback device.\n");
+        ma_device_uninit(&device);
+        ma_decoder_uninit(&decoder);
+        return -4;
+    }
+
+    printf("Press Enter to quit...");
+    getchar();
+
+    ma_device_uninit(&device);
+    ma_decoder_uninit(&decoder);
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+}
 
 struct Point
 {
@@ -283,23 +346,18 @@ void motion(int x, int y) {
     else if (angle_x <= -6){
         angle_x =-6;
     }
-    if (angle_y >= 130) {
-        angle_y = 130;
+    if (angle_y >= 150) {
+        angle_y = 150;
     }
-    else if (angle_y <= 45) {
-        angle_y = 45;
+    else if (angle_y <= 30) {
+        angle_y = 30;
     }
     // change the value as necessary 
-    printf("%f ", angle_x);
+    //printf("%f ", angle_x);
     //printf("%f ", angle_y);
 
 }
-void render_text(const char* text, float x, float y) {
-    glRasterPos2f(x, y);
-    for (const char* c = text; *c != '\0'; ++c) {
-        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
-    }
-}
+
 
 void init() {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -317,6 +375,7 @@ void init() {
     loadContainer();
     model.load("deagle.obj");
     points();
+
 }
 void drawGrid() {
     GLint line;
@@ -717,7 +776,22 @@ void gun(int radius,int height) {
     glPopMatrix();
 
 }
+void drawPlusMark() {
+    // Set the line width
+    glLineWidth(3.0);
 
+    // Draw vertical line
+    glBegin(GL_LINES);
+    glVertex2f(0.0, 0.3); // Start point
+    glVertex2f(0.0, -0.3); // End point
+    glEnd();
+
+    // Draw horizontal line
+    glBegin(GL_LINES);
+    glVertex2f(-0.3, 0.0); // Start point
+    glVertex2f(0.3, 0.0); // End point
+    glEnd();
+}
 void display() {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -763,7 +837,7 @@ void display() {
     glTranslatef(pos_x, 3, pos_z);
 
     glPushMatrix();
-    drawAxes();
+    //drawAxes();
 
    /* glPushMatrix();
     glColor3f(1.0, 1.0, 1.0);
@@ -792,7 +866,16 @@ void display() {
     //model.draw();
     glPopMatrix();
 
+    //aim
+    glPushMatrix();
+    glColor3f(0,0,0);
+    glTranslated(-pos_x - 2, pos_y + 2, -pos_z);
 
+    glRotatef(90, 0, 1, 0);
+    glScaled(0.5, 0.5, 0.5);
+
+    drawPlusMark();
+    glPopMatrix();
 
 
     glPopMatrix();
@@ -897,7 +980,6 @@ void update(int value) {
         velocity_y = 0.0f;
         jumping = false;
     }
-
     // Call update function again
     glutTimerFunc(60, update, 0);
 }
@@ -1021,7 +1103,13 @@ int main(int argc, char** argv) {
     glutMotionFunc(motion);
     glutTimerFunc(200, update, 0);
 
+    std::thread audioThread(play);
+
     glutTimerFunc(200, Timer, 0);
+    glutMainLoop();
+
+    // Join the audio thread to wait for it to finish
+    audioThread.join();
 
     glutMainLoop();
 
