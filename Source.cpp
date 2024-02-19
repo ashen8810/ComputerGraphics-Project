@@ -48,13 +48,8 @@ int play() {
 
     result = ma_decoder_init_file("walk.wav", NULL, &decoder);
     if (result != MA_SUCCESS) {
-        //return -2;
     }
 
-    /*
-    A decoder is a data source which means we just use ma_data_source_set_looping() to set the
-    looping state. We will read data using ma_data_source_read_pcm_frames() in the data callback.
-    */
     ma_data_source_set_looping(&decoder, MA_TRUE);
 
     deviceConfig = ma_device_config_init(ma_device_type_playback);
@@ -94,7 +89,6 @@ struct Point p1;
 struct Point p2;
 struct Point p3;
 struct Point p4;
-struct Point p5;
 
 void points() {
 
@@ -251,11 +245,6 @@ public:
                 glEnable(GL_LIGHTING);
         }
         glEndList();
-        //printf("Model: %s\n", filename);
-        //printf("Vertices: %d\n", vertices.size());
-        //printf("Texcoords: %d\n", texcoords.size());
-        //printf("Normals: %d\n", normals.size());
-        //printf("Faces: %d\n", faces.size());
         for (float* f : vertices)
             delete f;
         vertices.clear();
@@ -289,7 +278,7 @@ float angle_x = 30.0f, angle_y = 0.0f;
 int x_old = 0, y_old = 0;
 int current_scroll = 5;
 float zoom_per_scroll;
-
+int gunNum = 2;
 bool is_holding_mouse = false;
 bool is_updated = false;
 float sensitivity = 0.2;
@@ -338,7 +327,7 @@ void motion(int x, int y) {
 
     }
 
-    if (angle_x >= 12) {
+    /*if (angle_x >= 12) {
         angle_x = 12;
     }
 
@@ -346,12 +335,12 @@ void motion(int x, int y) {
     else if (angle_x <= -6){
         angle_x =-6;
     }
-    if (angle_y >= 150) {
-        angle_y = 150;
+    if (angle_y >= 230) {
+        angle_y = 230;
     }
-    else if (angle_y <= 30) {
-        angle_y = 30;
-    }
+    else if (angle_y <= 10) {
+        angle_y = 10;
+    }*/
     // change the value as necessary 
     //printf("%f ", angle_x);
     //printf("%f ", angle_y);
@@ -697,10 +686,10 @@ void drawHouse() {
     //item1
     if (item1) {
         glPushMatrix();
-        glColor3d(1, 1, 0);
+        glColor3d(1, 0, 0);
         glTranslated(p1.x, p1.y, p1.z);
         glRotated(objRY, 0, 1, 0);
-        glutSolidCube(1);
+        drawHeart();
         glPopMatrix();
     }
 
@@ -718,7 +707,7 @@ void drawHouse() {
     //item3
     if (item3) {
         glPushMatrix();
-        glColor3d(1, 0, 0);
+        glColor3d(1, 1, 0);
         glTranslated(p3.x, p3.y, p3.z);
         glRotated(objRY, 0, 1, 0);
         glScaled(0.8, 0.8, 0.8);
@@ -778,8 +767,8 @@ void gun(int radius,int height) {
 }
 void drawPlusMark() {
     // Set the line width
-    glLineWidth(3.0);
-
+    glLineWidth(4.0);
+    glColor3d(1, 0, 0);
     // Draw vertical line
     glBegin(GL_LINES);
     glVertex2f(0.0, 0.3); // Start point
@@ -829,7 +818,6 @@ void display() {
 
 
     glDisable(GL_NORMALIZE);
-    //glDisable(GL_COLOR_MATERIAL);
     glPushMatrix();
 
     glRotatef(angle_x, 1.0f, 0.0f, 0.0f);
@@ -853,17 +841,37 @@ void display() {
     glPushMatrix();
     glColor3f(0.1, 0.2, 0.1);
 
-    glTranslated(-pos_x-2, pos_y+1, -pos_z);
-    glScaled(0.3, 0.3, 0.3);
+ 
+    if (gunNum == 1) {
+        glTranslated(-pos_x - 2, pos_y + 1, -pos_z);
+        glScaled(0.3, 0.3, 0.3);
 
-    glRotatef(-angle_x, 1, 0, 0);
+        glRotatef(-angle_x, 1, 0, 0);
 
-    glRotatef(-angle_y, 0, 1, 0);
-    glRotatef(90, 1, 0, 0);
-    glScaled(0.1, 5, 0.1);
-    gun(4,2);
+        glRotatef(-angle_y, 0, 1, 0);
+        glRotatef(90, 1, 0, 0);
+        glScaled(0.1, 5, 0.1);
+        gun(4, 2);
+    }
+    else {
 
-    //model.draw();
+        glTranslated(-pos_x - 5, -pos_y + 1, -pos_z);
+        glScaled(0.3, 0.3, 0.3);
+
+        glRotatef(-angle_x, 1, 0, 0);
+
+        glRotatef(-angle_y, 0, 1, 0);
+
+        glScaled(0.5, 0.5, 0.5);
+
+        glRotatef(-180, 0, 0, 1);
+
+
+        model.draw();
+
+    }
+ 
+
     glPopMatrix();
 
     //aim
@@ -987,25 +995,14 @@ void update(int value) {
 
 // keyboard move object 
 void keyboard(unsigned char key, int x, int y) {
-
+    if (key == 'z') {
+        gunNum = 1;
+    }
+    if (key == 'x') {
+        gunNum = 2;
+    }
  
-    if (key == 'Z')
-        sceTZ += 1;
-
-    if (key == 'z')
-        sceTZ -= 1;
-
-    if (key == 'w')
-        sceTX += 1;
-
-    if (key == 's')
-        sceTX -= 1;
-
-    if (key == 'y')
-        sceRY += 1;
-
-    if (key == 'Y')
-        sceRY -= 1;
+    
 
     // Control light source 1
     if (key == '1') {
@@ -1060,8 +1057,6 @@ void keyboard(unsigned char key, int x, int y) {
         //item4
         float xx4 = abs(-pos_x - p4.x);
         float zz4 = abs(-pos_z - p4.z);
-        printf("%f ", xx4);
-        printf("%f ", zz4);
 
         if ((xx4 <= 2) && (zz4 <= 2)) {
             item4 = FALSE;
